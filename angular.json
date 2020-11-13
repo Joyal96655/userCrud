@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "userService"
+    }
+  },
+  "defaultProject": "userService",
+  "cli": {
+    "analytics": "118a0696-48bc-4358-92e2-d04ae7215df5"
+  }
 }
