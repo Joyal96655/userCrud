@@ -13,7 +13,7 @@
        
                    <!-- 1st row -->
                    <div class="row">
-                     <div class="col-md-5 form-group">
+                     <div class="col-md-10 form-group">
                        <label class="form-label">First Name <span class="validatered">*</span></label>
                        <input type="text" class="semi-bold" formControlName="fname"  placeholder="First Name" maxlength="100">
                        <span *ngIf="(showFlag.isClickedOnSubmit) && f.fname.invalid" class="text-danger">
@@ -21,28 +21,28 @@
                        </span>
                      </div>
        
-                     <div class="col-md-5 form-group">
+                     <div class="col-md-10 form-group">
                          <label class="form-label">Last Name <span class="validatered">*</span></label>
                          <input type="text" class="semi-bold" formControlName="lname"  placeholder="Last Name" maxlength="100">
                          <span *ngIf="(showFlag.isClickedOnSubmit) && f.lname.invalid" class="text-danger">
                           Last Name is required
                          </span>
                      </div>
-                     <div class="col-md-4 form-group">
+                     <div class="col-md-10 form-group">
                          <label class="form-label">Email <span class="validatered">*</span></label>
                          <input type="email" class="semi-bold" formControlName="email"  placeholder="Email" maxlength="100">
                          <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
                           Email is required
                          </span>
                      </div>
-                     <div class="col-md-4 form-group">
+                     <div class="col-md-10 form-group">
                       <label class="form-label">Password <span class="validatered">*</span></label>
                       <input type="password" class="semi-bold" formControlName="password"  placeholder="Email" maxlength="100">
                       <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
                       Password is required
                       </span>
                     </div>
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-10 form-group">
                       <label class="form-label">Confirm Password <span class="validatered">*</span></label>
                       <input type="password" class="semi-bold" formControlName="cpassword"  placeholder="Email" maxlength="100">
                       <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
