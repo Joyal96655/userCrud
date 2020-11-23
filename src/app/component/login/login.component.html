@@ -1,27 +1,33 @@
-<form [formGroup]="loginForm" class="contactForm"  #onError>
-    <div class="imgcontainer">
-      <img src="../../../assets/images/download.png" alt="Avatar" class="avatar">
-    </div>
-  
-    <div class="container">
-      <label for="uname"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email Id" formControlName="email"  placeholder="Enter Email"  name="uname" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw"  formControlName="password"  placeholder="Enter Password"  required>
-  
-      <button type="submit" (click)="onSubmit()">Login</button>
-      <!-- <label>
-        <input type="checkbox" checked="checked" name="remember">Remember me
-      </label> -->
-      <span class="signup"><a href="/register">Sign Up</a></span>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  
-    <!-- <div class="container" style="background-color:#f1f1f1">
-      
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div> -->
-  </form>
-  
+
+
+<div id="wrapper">
+  <div id="page-wrapper">
+    <ngx-loading [show]="showFlag.spinner" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true}"></ngx-loading>
+    <form [formGroup]="loginForm" class="contactForm"  #onError>
+      <div class="imgcontainer">
+        <img src="../../../assets/images/download.png" alt="Avatar" class="avatar">
+      </div>
+    
+      <div class="container">
+        <label for="uname"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email Id" formControlName="email"  placeholder="Enter Email"  name="uname" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw"  formControlName="password"  placeholder="Enter Password"  required>
+    
+        <button type="submit" (click)="onSubmit()">Login</button>
+        <!-- <label>
+          <input type="checkbox" checked="checked" name="remember">Remember me
+        </label> -->
+        <span class="signup"><a href="/register">Sign Up</a></span>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    
+      <!-- <div class="container" style="background-color:#f1f1f1">
+        
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div> -->
+    </form>
+  </div>
+ </div> 

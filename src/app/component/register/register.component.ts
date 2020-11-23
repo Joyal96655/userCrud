@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToasterService } from 'src/app/services/toaster.service';
 import { register } from '../../models/register.model';
 import { UserService } from '../../services/user.service';
 @Component({
@@ -16,7 +17,11 @@ export class RegisterComponent implements OnInit {
   };
   registerUser = new register();
   @ViewChild('onError') Error: ElementRef;
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private toastrService: ToasterService) {
     this.registration = this.formBuilder.group({
       fname: [null, Validators.required],
       lname: [null, Validators.required],
@@ -49,15 +54,28 @@ export class RegisterComponent implements OnInit {
       this.userService.saveUser(this.registerUser).subscribe(
         (res: any) => {
           console.log('res', res);
+          this.toastrService.showSuccess(
+            'Done!',
+            'Registration Successfull.'
+          );
           this.router.navigate(['login']);
-        }, err => {});
-    } else {
+        }, err => {
+          this.toastrService.showError(
+            'Error!',
+           err.error.errors[0].message
+          );
+        });
       this.showFlag.spinner = false;
+    } else {
       this.Error.nativeElement.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      alert('Kindly fill proper data in required field');
+      this.toastrService.showError(
+        'Error!',
+        'Kindly fill proper data in required field'
+      );
+      this.showFlag.spinner = false;
     }
   }
   // tslint:disable-next-line:typedef
