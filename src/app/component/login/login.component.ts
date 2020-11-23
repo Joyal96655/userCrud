@@ -42,13 +42,16 @@ export class LoginComponent implements OnInit {
       this.loginUser.password = formValues.password ? formValues.password : '';
       this.userService.loginUser(this.loginUser).subscribe(
         (res: any) => {
+          this.userService.getToken(res.id).subscribe(
+            (resp: any) => {
+              this.router.navigate(['profile'], { queryParams: res.id });
+              }, err => {});
           console.log('res', res);
           this.toastrService.showSuccess(
             'Done!',
             'Login Successfull.'
           );
           this.showFlag.spinner = false;
-          this.router.navigate(['login']);
         }, err => {
           this.showFlag.spinner = false;
           this.toastrService.showError(

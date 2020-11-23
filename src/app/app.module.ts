@@ -28,7 +28,7 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserAnimationsModule,
