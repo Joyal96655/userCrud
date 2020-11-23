@@ -19,6 +19,6 @@ export class UserService {
   }
   // tslint:disable-next-line:typedef
   loginUser(params) {
-    return this.http.post('user/signin', params);
+    return this.http.post('/user/signin', params);
   }
 }

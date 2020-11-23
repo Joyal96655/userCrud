@@ -10,6 +10,7 @@ import {
   HttpRequest,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
+import { Interceptor } from '../interceptor';
 import { UserService } from './services/user.service';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
@@ -29,7 +30,9 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     ReactiveFormsModule,
   ],
   providers:  [
-   UserService
+  Interceptor,
+   UserService,
+   { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
  ],
   bootstrap: [AppComponent]
 })
