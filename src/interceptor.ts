@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
-import { environment } from '../environments/environment';
+import { environment } from './environments/environment';
 export class Interceptor implements HttpInterceptor {
     intercept(
         req: HttpRequest<any>,
@@ -22,13 +22,13 @@ export class Interceptor implements HttpInterceptor {
           .item(0) as HTMLElement;
 
         const url = environment.apiUrl;
-
+        console.log('url', url);
         req = req.clone({
             url: url + req.url,
             setHeaders: {
-              // "Content-Type": "application/json",
-              Accept: 'application/json',
-              AuthToken: 'ePnnWv6zrcldla62vUP5XhFw3W89kI3N',
+              'Content-Type': 'application/json',
+              // Accept: 'application/json',
+              // AuthToken: 'ePnnWv6zrcldla62vUP5XhFw3W89kI3N',
             },
           });
         console.log('req', req);
