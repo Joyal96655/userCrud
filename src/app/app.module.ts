@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './component/home/home.component';
+import { AuthGuard } from './auth.guard';
 // tslint:disable-next-line:quotemark
 import { ReactiveFormsModule } from "@angular/forms";
 import {
@@ -25,7 +27,8 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -44,10 +47,11 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     }),
   ],
   providers:  [
-  Interceptor,
-   UserService,
-   ToasterService,
-   { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    AuthGuard,
+    Interceptor,
+    UserService,
+    ToasterService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
  ],
   bootstrap: [AppComponent]
 })

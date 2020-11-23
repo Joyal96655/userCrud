@@ -10,7 +10,7 @@
     </div>
   </div>
 </nav>
-<div class="profile-box" *ngIf="showProfile">
+<div class="profile-box" *ngIf="showFlag.profile">
   <ul class="ul-reset">
     <li>
       <span class="text-muted">Welcome, </span><br />
@@ -26,7 +26,7 @@
     </li>
   </ul>
 </div>
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 <footer class="hidden">
   <hr />
   <div class="container">
