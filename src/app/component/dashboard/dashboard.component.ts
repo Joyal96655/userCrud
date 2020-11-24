@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { register } from 'src/app/models/register.model';
 import { ToasterService } from 'src/app/services/toaster.service';
 import { UserService } from 'src/app/services/user.service';
@@ -23,17 +23,24 @@ export class DashboardComponent implements OnInit {
    editUserDetails = new FormGroup({});
    registerUser = new register();
    @ViewChild('onError') Error: ElementRef;
-  constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private userService: UserService,
-              private toastrService: ToasterService) {
-    this.editUserDetails = this.formBuilder.group({
-      fname: [null, Validators.required],
-      lname: [null, Validators.required],
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private toastrService: ToasterService,
+    private activatedRoute: ActivatedRoute) {
+      this.editUserDetails = this.formBuilder.group({
+                    fname: [null, Validators.required],
+                    lname: [null, Validators.required],
     });
   }
 // tslint:disable-next-line:typedef
-ngOnInit(){}
+ngOnInit(){
+  this.activatedRoute.queryParams.subscribe((params) => {
+    console.log('params', params);
+  });
+
+}
   // tslint:disable-next-line:typedef
 onEdit(){
     this.showFlag.isEdit = !this.showFlag.isEdit;

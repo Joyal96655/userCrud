@@ -42,11 +42,8 @@ export class LoginComponent implements OnInit {
       this.loginUser.password = formValues.password ? formValues.password : '';
       this.userService.loginUser(this.loginUser).subscribe(
         (res: any) => {
-          this.userService.getToken(res.id).subscribe(
-            (resp: any) => {
-              this.router.navigate(['profile'], { queryParams: res.id });
-              }, err => {});
           console.log('res', res);
+          this.router.navigate(['profile'], { queryParams: res.user.id });
           this.toastrService.showSuccess(
             'Done!',
             'Login Successfull.'
