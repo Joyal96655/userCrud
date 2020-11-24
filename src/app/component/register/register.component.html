@@ -1,0 +1,71 @@
+   <div id="wrapper">
+    <div id="page-wrapper">
+      <h2>Register</h2>
+      <ngx-loading [show]="showFlag.spinner" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true}"></ngx-loading>
+   
+      <form [formGroup]="registration" class="contactForm" #onError>
+         <div class="container container-100">
+           <div class="row">
+             <!-- <ngx-loading [show]="showSpinner" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true}">
+             </ngx-loading> -->
+             <div class="col-md-12">
+               <div class="panel panel-default">
+                 <!-- <div class="panel-heading">CP Brief Description</div> -->
+                 <div class="panel-body">
+       
+                   <!-- 1st row -->
+                   <div class="row">
+                     <div class="col-md-10 form-group">
+                       <label class="form-label">First Name <span class="validatered">*</span></label>
+                       <input type="text" class="semi-bold" formControlName="fname"  placeholder="First Name" maxlength="100">
+                       <span *ngIf="(showFlag.isClickedOnSubmit) && f.fname.invalid" class="text-danger">
+                        First Name is required
+                       </span>
+                     </div>
+       
+                     <div class="col-md-10 form-group">
+                         <label class="form-label">Last Name <span class="validatered">*</span></label>
+                         <input type="text" class="semi-bold" formControlName="lname"  placeholder="Last Name" maxlength="100">
+                         <span *ngIf="(showFlag.isClickedOnSubmit) && f.lname.invalid" class="text-danger">
+                          Last Name is required
+                         </span>
+                     </div>
+                     <div class="col-md-10 form-group">
+                         <label class="form-label">Email <span class="validatered">*</span></label>
+                         <input type="email" class="semi-bold" formControlName="email"  placeholder="Email" maxlength="100">
+                         <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
+                          Email is required
+                         </span>
+                     </div>
+                     <div class="col-md-10 form-group">
+                      <label class="form-label">Password <span class="validatered">*</span></label>
+                      <input type="password" class="semi-bold" formControlName="password"  placeholder="Email" maxlength="100">
+                      <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
+                      Password is required
+                      </span>
+                    </div>
+                    <div class="col-md-10 form-group">
+                      <label class="form-label">Confirm Password <span class="validatered">*</span></label>
+                      <input type="password" class="semi-bold" formControlName="cpassword"  placeholder="Email" maxlength="100">
+                      <span *ngIf="(showFlag.isClickedOnSubmit) && f.email.invalid" class="text-danger">
+                      Confirm Password is required
+                      </span>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                     <div class="col-md-12  btn-div text-center">
+                       <!-- [disabled]="!cpForm.valid" -->
+                       <button type="button" class="btn btn-cancelling" (click)="cancel()">Cancel</button>
+                       <button type="submit" class="btn  btn-saving"
+                         (click)="onSubmit()">Register</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+       
+         </div>
+       </form>
+     </div>
+   </div>

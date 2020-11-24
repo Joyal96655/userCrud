@@ -1,0 +1,92 @@
+
+<section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <ngx-loading [show]="showFlag.spinner" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true}">
+          </ngx-loading>  
+          
+        </div>
+        <div class="leads-tables scroll_horizontal" style="padding: 0px 10px;">
+          <div *ngIf="!showFlag.isEdit">
+            <table  class="table tble-rf table-mobile mp">
+                <thead>
+                      <tr >
+                        <th width=" 20%" class="paddl-20" >
+                            First Name
+                        </th> 
+                        <th width=" 20%" class="paddl-20" >
+                        {{userDetails.firstname}}
+                          </th>
+                      </tr>
+                      <tr>    
+                          <th width=" 20%" class="paddl-20" >
+                          Last Name
+                          </th>   
+                          <th width=" 20%" class="paddl-20" >
+                          {{userDetails.lastname}}
+                          </th>
+                      </tr>
+                      <tr>    
+                          
+                      <th width=" 20%" class="paddl-20" >
+                          Email
+                          </th>   
+                          <th width=" 20%" class="paddl-20" >
+                          {{userDetails.email}}
+                          </th>
+                      </tr >
+                </thead>
+            </table>
+            <button type="button" class="btn btn-primary" (click)="onEdit()">Update</button>
+          </div>
+          <div *ngIf="showFlag.isEdit">
+            <form [formGroup]="editUserDetails" class="contactForm" #onError>
+                <div class="container container-100">
+                  <div class="row">
+                    <!-- <ngx-loading [show]="showSpinner" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true}">
+                    </ngx-loading> -->
+                    <div class="col-md-12">
+                      <div class="panel panel-default">
+                        <!-- <div class="panel-heading">CP Brief Description</div> -->
+                        <div class="panel-body">
+              
+                          <!-- 1st row -->
+                          <div class="row">
+                            <div class="col-md-10 form-group">
+                              <label class="form-label">First Name <span class="validatered">*</span></label>
+                              <input type="text" class="semi-bold" formControlName="fname"  placeholder="First Name" maxlength="100">
+                              <span *ngIf="(showFlag.isClickedOnSubmit) && f.fname.invalid" class="text-danger">
+                               First Name is required
+                              </span>
+                            </div>
+              
+                            <div class="col-md-10 form-group">
+                                <label class="form-label">Last Name <span class="validatered">*</span></label>
+                                <input type="text" class="semi-bold" formControlName="lname"  placeholder="Last Name" maxlength="100">
+                                <span *ngIf="(showFlag.isClickedOnSubmit) && f.lname.invalid" class="text-danger">
+                                 Last Name is required
+                                </span>
+                            </div>
+                        </div>
+                          <div class="form-group">
+                            <div class="col-md-12  btn-div text-center">
+                              <!-- [disabled]="!cpForm.valid" -->
+                              <button type="button" class="btn btn-cancelling" (click)="cancel()">Cancel</button>
+                              <button type="submit" class="btn  btn-saving"
+                                (click)="onSubmit()">Save</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+                </div>
+              </form>
+        </div>  
+        </div>
+         
+      </div>
+    </div>  
+  </section> 

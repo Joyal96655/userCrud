@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  showFlag =  {
+    profile: true,
+   };
+   menuName: any = '';
+  constructor(private router: Router) {
+    if (
+      this.router.url.includes('profile')
+    ) {
+      this.menuName = 'Dashboard';
+    }
+  }
 
   ngOnInit(): void {
   }
-
+  // tslint:disable-next-line:typedef
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
