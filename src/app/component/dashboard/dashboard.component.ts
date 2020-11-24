@@ -38,8 +38,21 @@ export class DashboardComponent implements OnInit {
 ngOnInit(){
   this.activatedRoute.queryParams.subscribe((params) => {
     console.log('params', params);
+    if (Object.keys(params).length !== 0) {
+      this.getUserInfo(params);
+    }else{
+      this.getUserInfo();
+    }
   });
 
+}
+// tslint:disable-next-line:typedef
+getUserInfo(id?){
+  console.log('getUserInfo', id);
+  this.userService.getUser(id).subscribe(
+    (res: any) => {
+      console.log('res', res);
+    }, err => {});
 }
   // tslint:disable-next-line:typedef
 onEdit(){

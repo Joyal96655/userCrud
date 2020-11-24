@@ -23,8 +23,17 @@ export class UserService {
   }
   // tslint:disable-next-line:typedef
   getUser(params?) {
-    return this.http.get('user', {
-      params
-    });
+    console.log('params', params);
+    if (params){
+      return this.http.get('/user', {
+        params
+      });
+    }else{
+      return this.http.get('/user/me');
+    }
+  }
+  // tslint:disable-next-line:typedef
+  getUserMe() {
+    return this.http.get('/user/me');
   }
 }

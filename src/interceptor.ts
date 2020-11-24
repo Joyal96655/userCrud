@@ -22,15 +22,27 @@ export class Interceptor implements HttpInterceptor {
           .item(0) as HTMLElement;
 
         const url = environment.apiUrl;
-        console.log('url', url);
-        req = req.clone({
+        console.log('url', url, 'req', req.url);
+        if (req.url === '/user/signin' || req.url === '/user/signup'){
+          console.log('req.url in else if', req.url);
+          req = req.clone({
             url: url + req.url,
             setHeaders: {
               'Content-Type': 'application/json',
+             },
+          });
+        } else if (req.url === '/user/me') {
+          console.log('req.url in if', req.url);
+          req = req.clone({
+            url: url + req.url,
+            setHeaders: {
+              'Content-Type': 'application/json',
+              Token: localStorage.getItem('token')
               // Accept: 'application/json',
               // AuthToken: 'ePnnWv6zrcldla62vUP5XhFw3W89kI3N',
             },
           });
+        }
         console.log('req', req);
         return next.handle(req);
       }
