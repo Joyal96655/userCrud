@@ -44,11 +44,6 @@ export class LoginComponent implements OnInit {
         (res: any) => {
           console.log('res', res);
           localStorage.setItem('token', res.token);
-          // localStorage.setItem('userDetails', JSON.stringify(res.user));
-          // tslint:disable-next-line:prefer-const
-          let x = {
-            userId: res.user.id,
-          };
           this.router.navigate(['profile']);
           this.toastrService.showSuccess(
             'Done!',

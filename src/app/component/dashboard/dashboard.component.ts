@@ -35,34 +35,52 @@ export class DashboardComponent implements OnInit {
     });
   }
 // tslint:disable-next-line:typedef
-ngOnInit(){
-  this.activatedRoute.queryParams.subscribe((params) => {
-    console.log('params', params);
-    if (Object.keys(params).length !== 0) {
-      this.getUserInfo(params);
-    }else{
-      this.getUserInfo();
-    }
-  });
+  ngOnInit(){
+    this.activatedRoute.queryParams.subscribe((params) => {
+      console.log('params', params);
+      if (Object.keys(params).length !== 0) {
+        this.getUserInfo(params);
+      }else{
+        this.getUserInfo();
+      }
+    });
 
 }
 // tslint:disable-next-line:typedef
-getUserInfo(id?){
-  console.log('getUserInfo', id);
-  this.userService.getUser(id).subscribe(
-    (res: any) => {
-      console.log('res', res);
-    }, err => {});
-}
+  getUserInfo(id?){
+    this.showFlag.spinner = true;
+    this.userService.getUser(id).subscribe(
+      (res: any) => {
+        console.log('res', res);
+        this.userDetails.firstname = res.firstname;
+        this.userDetails.lastname = res.lastname;
+        this.userDetails.email = res.email;
+        this.showFlag.spinner = false;
+      }, err => {
+        this.showFlag.spinner = false;
+        this.toastrService.showError(
+          'Error!',
+        err.error.errors[0].message
+        );
+      });
+  }
   // tslint:disable-next-line:typedef
-onEdit(){
+  onEdit(){
     this.showFlag.isEdit = !this.showFlag.isEdit;
+    this.showFlag.spinner = true;
+    this.editUserDetails.patchValue({
+      fname: this.userDetails.firstname,
+      lname:  this.userDetails.lastname
+    });
+    this.showFlag.spinner = false;
+  }
+  // tslint:disable-next-line:typedef
+  get f() {
+    return this.editUserDetails.controls;
   }
 // tslint:disable-next-line:typedef
-onSubmit() {
+  onSubmit() {
     this.showFlag.isClickedOnSubmit = true;
-    this.showFlag.spinner = true;
-    console.log('registration', this.editUserDetails);
     if (this.editUserDetails.valid) {
       this.showFlag.isClickedOnSubmit = true;
       this.showFlag.spinner = true;
@@ -70,25 +88,23 @@ onSubmit() {
       let formValues = this.editUserDetails.value;
       this.registerUser.firstname = formValues.fname ? formValues.fname : '';
       this.registerUser.lastname = formValues.lname ? formValues.lname : '';
-      this.registerUser.email = formValues.email ? formValues.email : '';
-      this.registerUser.password = formValues.password ? formValues.password : '';
-      this.registerUser.confirmPassword = formValues.cpassword ? formValues.cpassword : '';
-      console.log('registerUser', this.registerUser);
-      this.userService.saveUser(this.registerUser).subscribe(
+      this.userService.saveProfile(this.registerUser).subscribe(
         (res: any) => {
           console.log('res', res);
+          this.showFlag.isEdit = false;
           this.toastrService.showSuccess(
             'Done!',
-            'Registration Successfull.'
+            'Profile Updated Successfully.'
           );
-          this.router.navigate(['login']);
+          this.router.navigate(['profile']);
+          this.showFlag.spinner = false;
         }, err => {
           this.toastrService.showError(
             'Error!',
            err.error.errors[0].message
           );
+          this.showFlag.spinner = false;
         });
-      this.showFlag.spinner = false;
     } else {
       this.Error.nativeElement.scrollIntoView({
         behavior: 'smooth',

@@ -21,5 +21,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // tslint:disable-next-line:typedef
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

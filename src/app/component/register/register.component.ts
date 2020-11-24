@@ -33,12 +33,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // tslint:disable-next-line:typedef
+ // tslint:disable-next-line:typedef
   onSubmit(){
     console.log(' this.showFlag', this.showFlag);
     console.log(' this.showFlag', this.showFlag);
     this.showFlag.isClickedOnSubmit = true;
-    this.showFlag.spinner = true;
     console.log('registration', this.registration);
     if (this.registration.valid) {
       this.showFlag.isClickedOnSubmit = true;
@@ -58,14 +57,15 @@ export class RegisterComponent implements OnInit {
             'Done!',
             'Registration Successfull.'
           );
+          this.showFlag.spinner = false;
           this.router.navigate(['login']);
         }, err => {
           this.toastrService.showError(
             'Error!',
            err.error.errors[0].message
           );
+          this.showFlag.spinner = false;
         });
-      this.showFlag.spinner = false;
     } else {
       this.Error.nativeElement.scrollIntoView({
         behavior: 'smooth',

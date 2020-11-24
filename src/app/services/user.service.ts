@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post('/user/signup', data);
   }
   // tslint:disable-next-line:typedef
+  saveProfile(data){
+    return this.http.put('/user/profile', data);
+  }
+  // tslint:disable-next-line:typedef
   loginUser(params) {
     return this.http.post('/user/signin', params);
   }
@@ -31,9 +35,5 @@ export class UserService {
     }else{
       return this.http.get('/user/me');
     }
-  }
-  // tslint:disable-next-line:typedef
-  getUserMe() {
-    return this.http.get('/user/me');
   }
 }

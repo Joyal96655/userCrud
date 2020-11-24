@@ -37,7 +37,18 @@ export class Interceptor implements HttpInterceptor {
             url: url + req.url,
             setHeaders: {
               'Content-Type': 'application/json',
-              Token: localStorage.getItem('token')
+                'x-cs-token': localStorage.getItem('token')
+              // Accept: 'application/json',
+              // AuthToken: 'ePnnWv6zrcldla62vUP5XhFw3W89kI3N',
+            },
+          });
+        }else {
+          console.log('req.url in if', req.url);
+          req = req.clone({
+            url: url + req.url,
+            setHeaders: {
+              'Content-Type': 'application/json',
+                'x-cs-token': localStorage.getItem('token')
               // Accept: 'application/json',
               // AuthToken: 'ePnnWv6zrcldla62vUP5XhFw3W89kI3N',
             },
