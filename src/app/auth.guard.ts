@@ -24,9 +24,7 @@ export class AuthGuard implements CanActivate {
     console.log('hello from insideo', this.router, window.location, window.location.href);
     if (!localStorage.getItem('token')) {
       console.log('hello from inside %%%%%%', this.router, window.location, window.location.href);
-      this.router.navigate(['/login'], {
-        queryParams: { targetUrl: window.location.href },
-      });
+      this.router.navigate(['/login']);
      }
     return true;
   }

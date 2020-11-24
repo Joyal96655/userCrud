@@ -1422,24 +1422,86 @@
   .login-pbcustody .form-group{
     margin-top: 55px;
   }
-  .profile-box {
-    background: #fff;
-    position: fixed;
-    right: 15px;
-    top: 65px;
-    min-width: 200px;
-    z-index: 999;
-    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-    border-radius: 5px;
   
-    ul {
-      li {
-        padding: 10px 15px;
-        border-bottom: 1px solid #eee;
-        font-size: 14px;
-        letter-spacing: 0.25px;
-      }
+.profile-box {
+  background: #fff;
+  position: fixed;
+  right: 15px;
+  top: 65px;
+  min-width: 200px;
+  z-index: 999;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+
+  ul {
+    li {
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      letter-spacing: 0.25px;
     }
   }
-  
+}
+.ul-reset {
+  list-style: none;
+  // @include mall(0);
+  // @include pall(0);
+}
+
+.container-fluid {
+  padding: 0px !important;
+}
+@mixin mall($x) {
+  margin: $x;
+}
+@mixin pall($x) {
+  padding: $x;
+}
+
+.navbar-brand {
+  padding: 5px;
+  cursor: pointer;
+
+  img {
+    margin-left: 15px;
+  }
+
+  .menu-hamburger {
+    position: absolute;
+    top: 17px;
+    left: -10px;
+    width: 25px;
+    margin-left: 0px;
+  }
+}
+.leads-tables.scroll_horizontal{
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+.leads-tables.scroll_horizontal .table thead{
+  width: auto;
+}
+.leads-tables.scroll_horizontal .table{
+  overflow-x: auto;
+
+  tr th {
+    p { width: 100px; }
+  }
+
+}
+.leads-tables.scroll_horizontal .table tbody {
+  overflow-x: auto;
+}
+.titletext {
+  font-size: 22px;
+  color: #fff !important;
+  line-height: 50px;
+  position: fixed;
+}
+
+.semi-bold {
+  font-family: SegoeUI_Semibold !important;
+}

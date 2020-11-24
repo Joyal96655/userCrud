@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
       this.userService.loginUser(this.loginUser).subscribe(
         (res: any) => {
           console.log('res', res);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['profile']);
           this.toastrService.showSuccess(
             'Done!',
             'Login Successfull.'
           );
           this.showFlag.spinner = false;
-          this.router.navigate(['login']);
         }, err => {
           this.showFlag.spinner = false;
           this.toastrService.showError(

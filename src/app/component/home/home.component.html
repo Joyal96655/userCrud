@@ -6,27 +6,26 @@
         </a>
         <a class="navbar-brand" id="logo" href="dashboard">
         </a>
+        <a class="titletext semi-bold">
+          {{ menuName }}
+        </a>
        </div>
     </div>
   </div>
 </nav>
-<div class="profile-box" *ngIf="showProfile">
+<div class="profile-box" *ngIf="showFlag.profile">
   <ul class="ul-reset">
     <li>
       <span class="text-muted">Welcome, </span><br />
     </li>
-    <li class="hidden"><a href="#">My Account</a></li>
+    <!-- <li class="hidden"><a href="#">My Account</a></li> -->
     <li class="cursor" (click)="logout()">
       <img src="./assets/images/logout.png" width="15" /> &nbsp;
       <span >Logout</span>
-      <!-- PROD -->
-      <span class="pull-right">3.0.8</span>
-      <!-- UAT -->
-      <!-- <span class="pull-right">3.0.29</span> -->
     </li>
   </ul>
 </div>
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 <footer class="hidden">
   <hr />
   <div class="container">
